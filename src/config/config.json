@@ -1,0 +1,7 @@
+{
+    "apiKey": "ea021b3b0775c8531592713ab727f254",
+    "apiBaseUrl": "https://api.themoviedb.org/3",
+    "imageBaseUrl": "https://image.tmdb.org/t/p",
+    "defaultLanguage": "en-US",
+    "defaultRegion": "US"
+}

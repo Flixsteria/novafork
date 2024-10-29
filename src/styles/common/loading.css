@@ -1,0 +1,114 @@
+/* Loading Screen Container */
+#loadingScreen {
+    backdrop-filter: blur(10px);
+    transition: opacity 0.5s ease-in-out;
+}
+
+#loadingScreen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Progress Bar */
+#progressBar {
+    background: linear-gradient(45deg, #4b0082, #9b5de5);
+    box-shadow: 0 0 15px rgba(155, 93, 229, 0.5);
+    transition: width 0.5s ease-in-out;
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Loading Message */
+#loadingMessage {
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 10px rgba(155, 93, 229, 0.5);
+    transition: all 0.5s ease-in-out;
+    letter-spacing: 0.5px;
+}
+
+#loadingMessage i {
+    margin-right: 8px;
+    animation: spin 2s linear infinite;
+}
+
+/* Message Container */
+#loadingMessageContainer {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animations */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(155, 93, 229, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(155, 93, 229, 0.8);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Message Transition */
+.message-enter {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.message-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.message-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.message-exit-active {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Loading Screen Responsive Design */
+@media (max-width: 640px) {
+    #loadingMessage {
+        font-size: 1rem;
+    }
+}
+
+/* Enhanced Visual Effects */
+.loading-screen-content {
+    position: relative;
+}
+
+.loading-screen-content::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle at center, rgba(155, 93, 229, 0.1) 0%, transparent 70%);
+    animation: pulse 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+}

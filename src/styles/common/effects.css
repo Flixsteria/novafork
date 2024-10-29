@@ -1,0 +1,28 @@
+/* Glassmorphism Effect */
+.glassmorphism {
+    background: rgba(20, 20, 30, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(76, 0, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(31, 38, 135, 0.37),
+        0 0 10px rgba(76, 0, 255, 0.1);
+}
+
+/* Neon Text Effect */
+.neon-text {
+    text-shadow: 
+        0 0 5px rgba(76, 0, 255, 0.5),
+        0 0 10px rgba(76, 0, 255, 0.3),
+        0 0 15px rgba(76, 0, 255, 0.2);
+}
+
+/* Blur Background */
+.blur-bg {
+    backdrop-filter: blur(10px);
+}
+
+/* High Quality Background */
+.high-quality-bg {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}

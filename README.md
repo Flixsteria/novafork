@@ -1,11 +1,8 @@
-
-
 <p align="center">
   <strong>Nova</strong> – Your Gateway to Free Streaming
 </p>
 
-> **UPDATE ALERT**  
-> **NEW FEATURES AVAILABLE!**
+> **just got bored tbh, use the real novafork**
 
 # Nova ☄
 
@@ -13,51 +10,77 @@
 
 Nova is a versatile streaming platform designed to bring you a diverse collection of movies right to your fingertips. Whether you're into the latest blockbusters or timeless classics, Nova has something for everyone.
 
+## Project Structure
 
-## Actively Maintained Fork
+```
+novafork/
+├── src/
+│   ├── assets/         # Static assets (images, etc.)
+│   ├── components/     # UI components
+│   │   ├── media/     # Media-related components
+│   │   ├── search/    # Search functionality
+│   │   ├── filters/   # Filter components
+│   │   └── modals/    # Modal components
+│   ├── services/      # Business logic and services
+│   │   ├── api/       # API integration
+│   │   └── utils/     # Utility functions
+│   ├── styles/        # CSS styles
+│   ├── config/        # Configuration files
+│   └── index.js       # Application entry point
+├── index.html         # Main HTML file
+├── package.json       # Project configuration
+└── README.md         # Project documentation
+```
 
-This project is an actively maintained fork of the original Nova. It continually evolves with new ideas and features, ensuring that your viewing experience remains fresh and engaging.
+## Features
 
-## API Integrations
+- Modern modular architecture
+- Cyberpunk-themed UI
+- Advanced search functionality
+- Media filtering system
+- Responsive design
+- State management
+- Error handling
 
-Nova seamlessly integrates with two key APIs:
+## Getting Started
 
-- **The Movie Database (TMDb) API**: Provides detailed movie information, including summaries, ratings, and more.
-- **vidsrc.pro API**: Allows you to stream any movie you want, with a wide range of options to choose from.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/flixsteria/novafork.git
+   ```
 
-## User-Friendly Interface
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Nova is designed with the user in mind. Its intuitive interface makes it easy to navigate through different genres, discover new movies, and start watching with just a few clicks.
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-## Getting Started ✨
+4. Open http://localhost:3000 in your browser
 
-### Online Usage 🎉
+## Development
 
-Explore Nova online with ease—no setup required. Just dive in and start watching!
+- Components are modular and self-contained
+- State management is handled through stateManager.js
+- API calls are centralized in tmdbService.js
+- Styles are organized in src/styles/main.css
 
----
+## Contributing
 
-## Hosting 🌐
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-You’re welcome to host Nova on your own server! However, **please ensure you give proper credit** by linking to this repository or mentioning the original creators. This acknowledgment is required to use and share the site.
+## License
 
-## Community & Support 💬
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-Join our Discord community to stay updated, give feedback, or ask for help:
-- [Nova Discord Server](https://discord.gg/YK62kpT5ex)
+## Acknowledgments
 
-## Contributing ❤
-
-Contributions are greatly appreciated! If you’d like to help improve Nova, feel free to submit a pull request.
-
-#### Created with ❤ by ambr0sial and fanlim.
-
-
-## Star History 📊
-<a href="https://star-history.com/#noname25495/novafork&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=noname25495/novafork&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=noname25495/novafork&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=noname25495/novafork&type=Date" />
- </picture>
-</a>
+- Original project by Ambrosial
+- TMDB for the movie database API

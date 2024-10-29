@@ -1,0 +1,30 @@
+/* Common Button Styles */
+.btn-gradient {
+    background: linear-gradient(45deg, #4b0082, #9b5de5);
+    border: 1px solid rgba(76, 0, 255, 0.3);
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        0 0 10px rgba(76, 0, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 9999px;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(45deg, #6a0dad, #b76aff);
+    border-color: rgba(76, 0, 255, 0.6);
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(76, 0, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-gradient:active {
+    transform: translateY(0);
+}

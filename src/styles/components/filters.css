@@ -1,0 +1,236 @@
+/* Filter Container */
+.filter-container {
+    background: rgba(20, 20, 30, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(76, 0, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(31, 38, 135, 0.37),
+        0 0 10px rgba(76, 0, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Filter Controls */
+.filter-container .filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Select Container */
+.filter-container .custom-select {
+    position: relative;
+    display: inline-block;
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Select Styling */
+.filter-container select,
+.filter-container .custom-select select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background: rgba(31, 41, 55, 0.7) !important;
+    border: 1px solid rgba(76, 0, 255, 0.3) !important;
+    border-radius: 0.75rem !important;
+    color: #fff !important;
+    cursor: pointer;
+    font-size: 0.95rem !important;
+    padding: 0.75rem 2.5rem 0.75rem 2.75rem !important;
+    transition: all 0.3s ease;
+    min-width: 180px !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 1rem center !important;
+    background-size: 1em !important;
+    z-index: 1;
+}
+
+.filter-container select:hover,
+.filter-container .custom-select select:hover {
+    background-color: rgba(31, 41, 55, 0.9) !important;
+    border-color: rgba(76, 0, 255, 0.6) !important;
+    box-shadow: 
+        0 0 0 2px rgba(76, 0, 255, 0.1),
+        0 0 15px rgba(76, 0, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.filter-container select:focus,
+.filter-container .custom-select select:focus {
+    outline: none !important;
+    border-color: rgba(76, 0, 255, 0.8) !important;
+    box-shadow: 
+        0 0 0 3px rgba(76, 0, 255, 0.2),
+        0 0 20px rgba(76, 0, 255, 0.3);
+}
+
+/* Select Options */
+.filter-container select option,
+.filter-container .custom-select select option {
+    background: rgba(31, 41, 55, 0.95) !important;
+    color: #fff !important;
+    padding: 0.75rem !important;
+}
+
+/* Advanced Filters Toggle */
+.filter-container .filter-toggle {
+    background: rgba(31, 41, 55, 0.7) !important;
+    border: 1px solid rgba(76, 0, 255, 0.3) !important;
+    border-radius: 0.75rem !important;
+    color: #fff !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem !important;
+    font-size: 0.95rem !important;
+    transition: all 0.3s ease;
+    animation: slideIn 0.3s ease-out;
+}
+
+.filter-container .filter-toggle:hover {
+    background: rgba(31, 41, 55, 0.9) !important;
+    border-color: rgba(76, 0, 255, 0.6) !important;
+    box-shadow: 
+        0 0 0 2px rgba(76, 0, 255, 0.1),
+        0 0 15px rgba(76, 0, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.filter-container .filter-toggle svg {
+    transition: transform 0.3s ease;
+}
+
+.filter-container .filter-toggle.active svg {
+    transform: rotate(180deg);
+}
+
+/* Advanced Filters Section */
+.advanced-filters {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out, margin-top 0.3s ease-out;
+}
+
+.advanced-filters.show {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(76, 0, 255, 0.2);
+}
+
+.advanced-filters.hidden {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    padding-top: 0;
+    pointer-events: none;
+}
+
+/* Advanced Filter Inputs */
+.advanced-filters input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(31, 41, 55, 0.7);
+    border: 1px solid rgba(76, 0, 255, 0.3);
+    border-radius: 0.75rem;
+    color: #fff;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.advanced-filters input:hover {
+    border-color: rgba(76, 0, 255, 0.6);
+    box-shadow: 
+        0 0 0 2px rgba(76, 0, 255, 0.1),
+        0 0 15px rgba(76, 0, 255, 0.2);
+}
+
+.advanced-filters input:focus {
+    outline: none;
+    border-color: rgba(76, 0, 255, 0.8);
+    box-shadow: 
+        0 0 0 3px rgba(76, 0, 255, 0.2),
+        0 0 20px rgba(76, 0, 255, 0.3);
+}
+
+/* Suggestions Dropdown */
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(31, 41, 55, 0.95);
+    border: 1px solid rgba(76, 0, 255, 0.3);
+    border-radius: 0.75rem;
+    margin-top: 0.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 50;
+    display: none;
+}
+
+.suggestions.show {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.suggestions div {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.suggestions div:hover {
+    background-color: rgba(76, 0, 255, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .filter-container {
+        padding: 1rem;
+    }
+
+    .filter-container .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-container select,
+    .filter-container .custom-select select,
+    .filter-container .filter-toggle {
+        width: 100% !important;
+        min-width: unset !important;
+    }
+
+    .advanced-filters {
+        grid-template-columns: 1fr;
+    }
+}

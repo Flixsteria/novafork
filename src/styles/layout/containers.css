@@ -1,0 +1,55 @@
+/* Common Container Styles */
+.content-container {
+    background: rgba(20, 20, 30, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(76, 0, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(31, 38, 135, 0.37),
+        0 0 10px rgba(76, 0, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Section Container */
+.section-container {
+    margin: 2rem 0;
+}
+
+/* Grid Container */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+/* Flex Container */
+.flex-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 1rem;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .flex-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

@@ -1,0 +1,24 @@
+/* Base Styles */
+@import './base/base.css';
+@import './base/utilities.css';
+@import './base/animations.css';
+
+/* Layout Styles */
+@import './layout/layout.css';
+@import './layout/containers.css';
+
+/* Common Styles */
+@import './common/effects.css';
+@import './common/scrollbar.css';
+@import './common/buttons.css';
+@import './common/loading.css';
+
+/* Component Styles - Order matters for specificity */
+@import './components/mediaCard.css';
+@import './components/mediaDetails.css';
+@import './components/mediaPlayer.css';
+
+/* Filter Styles - Load last to ensure highest priority */
+@layer filters {
+    @import './components/filters.css';
+}

@@ -1,0 +1,33 @@
+/* Custom Scrollbar */
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(76, 0, 255, 0.5) rgba(20, 20, 30, 0.5);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    display: block;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(20, 20, 30, 0.5);
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(76, 0, 255, 0.5);
+    border-radius: 3px;
+}
+
+/* Console Hider Toggle Button */
+#toggleConsoleHider {
+    background: rgba(20, 20, 30, 0.9);
+    border: 1px solid rgba(76, 0, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+#toggleConsoleHider:hover {
+    border-color: rgba(76, 0, 255, 0.6);
+    box-shadow: 0 0 15px rgba(76, 0, 255, 0.3);
+    transform: translateY(-2px);
+}

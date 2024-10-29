@@ -1,0 +1,129 @@
+/* Video Player */
+#videoPlayer {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background: linear-gradient(to bottom right, #1a1a2e, #16213e);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 100px rgba(76, 0, 255, 0.2),
+        inset 0 0 20px rgba(76, 0, 255, 0.1);
+    margin: 2rem auto;
+    border: 1px solid rgba(76, 0, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+#videoPlayer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right,
+        transparent,
+        rgba(76, 0, 255, 0.5),
+        transparent
+    );
+}
+
+#videoPlayer::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right,
+        transparent,
+        rgba(76, 0, 255, 0.5),
+        transparent
+    );
+}
+
+#videoPlayer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 1;
+}
+
+#closePlayerButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    width: 36px;
+    height: 36px;
+    background: rgba(239, 68, 68, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+#closePlayerButton:hover {
+    background: rgba(220, 38, 38, 0.95);
+    transform: scale(1.1);
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+#closePlayerButton:active {
+    transform: scale(0.95);
+}
+
+#videoPlayer.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#videoPlayer.loading::before {
+    content: '';
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(76, 0, 255, 0.3);
+    border-top: 3px solid rgba(76, 0, 255, 0.8);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    #videoPlayer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        z-index: 1000;
+    }
+
+    #closePlayerButton {
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 44px;
+        height: 44px;
+    }
+}
