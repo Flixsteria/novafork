@@ -86,12 +86,17 @@ novafork/
    - Add episode information display
    - Improve series navigation
 
-2. **Advanced Filters Dropdown**
+2. **Hide Trending Button**
+   - Status: Broken
+   - Issue: Button functionality not working correctly
+   - Fix: Restore hide/show trending section toggle
+
+3. **Advanced Filters Dropdown**
    - Status: In Progress
    - Issue: Menu not displaying correctly
    - Fix: Restructure dropdown component
 
-3. **Movie Posters**
+4. **Movie Posters**
    - Status: Broken
    - Issue: Images not loading
    - Fix: Restore image loading logic
