@@ -1,4 +1,5 @@
 import urlService from './urlService.js';
+import videoProviders from '../api/videoProviders.js';
 
 const handleMediaSelect = function handleMediaSelect(media) {
   const app = this;
@@ -46,6 +47,32 @@ const handleMediaSelect = function handleMediaSelect(media) {
                     <div class="cast-character">${actor.character}</div>
                 </div>
             `).join('') || '';
+
+        // Get provider groups and generate provider selection HTML
+        const providerGroups = videoProviders.getProviderGroups();
+        const getGroupLabel = groupName => {
+          switch (groupName) {
+          case 'premium':
+            return 'Best Providers (No Ads)';
+          case 'standard':
+            return 'Alternative Providers (Ads May Appear)';
+          case 'anime':
+            return 'Anime Providers';
+          case 'alternative':
+            return 'Additional Providers';
+          default:
+            return 'Other Providers';
+          }
+        };
+
+        const providerSelectionHtml = Object.entries(providerGroups)
+          .map(([groupName, providers]) => {
+            const options = providers
+              .map(provider => `<option value="${provider.id}">${provider.name}</option>`)
+              .join('');
+            return `<optgroup label="${getGroupLabel(groupName)}">${options}</optgroup>`;
+          })
+          .join('');
 
         selectedMovie.innerHTML = `
                 <div class="media-details">
@@ -109,16 +136,7 @@ const handleMediaSelect = function handleMediaSelect(media) {
 
                     <div class="provider-selection">
                         <select id="providerSelect" class="provider-select">
-                            <optgroup label="Best Providers (No Ads)">
-                                <option value="vidlink">VidLink - Premium</option>
-                                <option value="vidbinge">VidBinge - 4K</option>
-                                <option value="vidsrcnl">VidSrc NL</option>
-                            </optgroup>
-                            <optgroup label="Alternative Providers (Ads May Appear)">
-                                <option value="vidsrc">VidSrc</option>
-                                <option value="embedsu">Embedsu</option>
-                                <option value="vidsrcicu">VidSrc ICU</option>
-                            </optgroup>
+                            ${providerSelectionHtml}
                         </select>
                     </div>
 
