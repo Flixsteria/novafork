@@ -1,5 +1,5 @@
 <p align="center">
-  <strong>Nova</strong> – Got bored tbh, use the real novafork.
+  <strong>Nova - revamp </strong> – Got bored tbh, use the real novafork.
 </p>
 
 > **This project is a fork of [novafork](https://github.com/noname25495/novafork), enhanced with additional features and improvements.**
