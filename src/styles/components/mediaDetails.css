@@ -18,6 +18,39 @@
     padding: 2rem;
 }
 
+.media-poster-large {
+    flex-shrink: 0;
+    width: 300px;
+    perspective: 1000px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.media-poster-large img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(76, 0, 255, 0.2);
+    transition: all 0.3s ease-in-out;
+    transform-origin: center center;
+    cursor: pointer;
+}
+
+.media-poster-large img:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(76, 0, 255, 0.3);
+    border-color: rgba(76, 0, 255, 0.5);
+}
+
+.media-content {
+    min-width: 0;
+}
+
 .media-header {
     margin-bottom: 1rem;
 }
@@ -179,11 +212,35 @@
     white-space: nowrap;
 }
 
-.provider-selection {
+.selectors-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
     margin: 1.5rem 0;
 }
 
-.provider-select {
+.provider-selection,
+.language-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.selector-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #9ca3af;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.selector-label i {
+    color: #8b5cf6;
+}
+
+.selector-input {
     width: 100%;
     background: rgba(31, 41, 55, 0.5);
     border: 1px solid rgba(76, 0, 255, 0.2);
@@ -192,14 +249,21 @@
     border-radius: 0.5rem;
     cursor: pointer;
     font-size: 1rem;
+    transition: all 0.2s ease-in-out;
 }
 
-.provider-select:hover {
+.selector-input:hover {
     border-color: rgba(76, 0, 255, 0.4);
     box-shadow: 0 0 15px rgba(76, 0, 255, 0.1);
 }
 
-.provider-select option {
+.selector-input:focus {
+    outline: none;
+    border-color: rgba(76, 0, 255, 0.6);
+    box-shadow: 0 0 20px rgba(76, 0, 255, 0.2);
+}
+
+.selector-input option {
     background: #1f2937;
     color: #fff;
     padding: 0.5rem;
@@ -253,6 +317,20 @@
         padding: 1rem;
     }
 
+    .media-details .flex {
+        flex-direction: column;
+    }
+
+    .media-poster-large {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto 2rem;
+    }
+
+    .media-poster-large img:hover {
+        transform: scale(1.02) translateY(-2px);
+    }
+
     .media-title {
         font-size: 1.5rem;
     }
@@ -278,6 +356,10 @@
         height: 80px;
     }
 
+    .selectors-container {
+        grid-template-columns: 1fr;
+    }
+
     .media-actions {
         flex-direction: column;
     }
@@ -290,4 +372,78 @@
 
 #videoPlayer {
     margin-top: 2rem;
+}
+
+/* New Trailer Button Styles */
+.trailer-button {
+    width: 100%;
+    background: rgba(31, 41, 55, 0.9);
+    color: #fff;
+    border: 1px solid rgba(76, 0, 255, 0.2);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.trailer-button i {
+    color: #ef4444;
+}
+
+.trailer-button:hover {
+    background: rgba(31, 41, 55, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(76, 0, 255, 0.4);
+}
+
+.trailer-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.trailer-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    aspect-ratio: 16/9;
+}
+
+.trailer-modal iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.close-trailer {
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    color: #fff;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.close-trailer:hover {
+    transform: scale(1.1);
 }

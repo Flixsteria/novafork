@@ -1,5 +1,5 @@
-import { generateImageUrl } from '../../services/utils/mediaUtils.js';
-import releaseTypeService from '../../services/utils/releaseTypeService.js';
+import { generateImageUrl } from '../../services/utils/media/mediaUtils.js';
+import releaseTypeService from '../../services/utils/search/releaseTypeService.js';
 
 class MediaCard {
   constructor(media, genreMap = {}) {

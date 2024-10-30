@@ -2,19 +2,19 @@ import TMDBService from './services/api/tmdbService.js';
 import MediaGrid from './components/media/MediaGrid.js';
 import SearchBar from './components/search/SearchBar.js';
 import FilterPanel from './components/filters/FilterPanel.js';
-import stateManager from './services/utils/stateManager.js';
+import stateManager from './services/utils/state/stateManager.js';
 import BitcoinModal from './components/modals/BitcoinModal.js';
 import DonateModal from './components/modals/DonateModal.js';
 import ShareModal from './components/modals/ShareModal.js';
 import MediaPlayer from './components/media/MediaPlayer.js';
 import LoadingScreen from './components/ui/LoadingScreen.js';
-import SearchService from './services/utils/searchService.js';
-import urlService from './services/utils/urlService.js';
-import releaseTypeService from './services/utils/releaseTypeService.js';
-import paginationService from './services/utils/paginationService.js';
-import filterService from './services/utils/filterService.js';
-import AdvancedSearchService from './services/utils/advancedSearchService.js';
-import handleMediaSelect from './services/utils/mediaHandlers.js';
+import SearchService from './services/utils/search/searchService.js';
+import urlService from './services/utils/navigation/urlService.js';
+import releaseTypeService from './services/utils/search/releaseTypeService.js';
+import paginationService from './services/utils/navigation/paginationService.js';
+import filterService from './services/utils/search/filterService.js';
+import AdvancedSearchService from './services/utils/search/advancedSearchService.js';
+import handleMediaSelect from './services/utils/media/mediaHandlers.js';
 
 class App {
   constructor() {

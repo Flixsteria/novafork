@@ -1,5 +1,5 @@
-import { debounce } from '../../services/utils/mediaUtils.js';
-import stateManager from '../../services/utils/stateManager.js';
+import { debounce } from '../../services/utils/media/mediaUtils.js';
+import stateManager from '../../services/utils/state/stateManager.js';
 
 class SearchBar {
   constructor(searchInputId, suggestionsId, onSearch, onSuggestionSelect) {
