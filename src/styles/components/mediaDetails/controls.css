@@ -1,9 +1,9 @@
 /* Provider & Language Selectors */
 .selectors-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
-    margin: 1rem 0;
+    margin-top: 1rem;
     width: 100%;
 }
 
@@ -65,28 +65,22 @@
 }
 
 /* Action Buttons */
-.media-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-    width: 100%;
-}
-
 .action-button {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    border-radius: 9999px;
+    border-radius: 0.5rem;
     font-weight: 600;
     font-size: 1rem;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .watch-button {
     background: linear-gradient(45deg, #4b0082, #9b5de5);
     color: #fff;
-    flex: 2;
 }
 
 .watch-button:hover {
@@ -95,11 +89,21 @@
     box-shadow: 0 4px 12px rgba(76, 0, 255, 0.3);
 }
 
+.party-button {
+    background: linear-gradient(45deg, #2563eb, #3b82f6);
+    color: #fff;
+}
+
+.party-button:hover {
+    background: linear-gradient(45deg, #1d4ed8, #60a5fa);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
 .share-button {
     background: rgba(31, 41, 55, 0.5);
     color: #fff;
     border: 1px solid rgba(76, 0, 255, 0.2);
-    flex: 1;
 }
 
 .share-button:hover {
@@ -111,9 +115,8 @@
 /* Mobile Styles */
 @media (max-width: 768px) {
     .selectors-container {
-        grid-template-columns: 1fr;
         gap: 0.75rem;
-        margin: 0.75rem 0;
+        margin-top: 0.75rem;
     }
 
     .selector-label {
@@ -125,20 +128,8 @@
         padding: 0.625rem;
     }
 
-    .media-actions {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
     .action-button {
-        width: 100%;
-        justify-content: center;
-        padding: 0.875rem;
+        padding: 0.625rem;
         font-size: 0.9375rem;
-    }
-
-    .watch-button,
-    .share-button {
-        flex: none;
     }
 }

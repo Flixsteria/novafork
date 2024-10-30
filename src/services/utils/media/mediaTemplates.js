@@ -43,7 +43,7 @@ export const generateSeasonSelector = (seasons, episodes) => {
       ${seasons.map(season => {
     const episodesWatched = 0;
     const progressPercentage = (episodesWatched / (season.episode_count || 1)) * 100;
-    
+
     return `
           <div class="season-item ${season.season_number === currentSeasonNumber ? 'selected' : ''}" 
                data-season-number="${season.season_number}">
@@ -73,20 +73,20 @@ export const generateSeasonSelector = (seasons, episodes) => {
         ${episodes.map(episode => {
     const episodeKey = `s${currentSeasonNumber}e${episode.episode_number}`;
     const episodeProgress = storedData[episodeKey]?.progress || { watched: 0, duration: 0 };
-    const progressPercentage = episodeProgress.duration > 0 
-      ? (episodeProgress.watched / episodeProgress.duration) * 100 
+    const progressPercentage = episodeProgress.duration > 0
+      ? (episodeProgress.watched / episodeProgress.duration) * 100
       : 0;
 
     return `
             <div class="episode-card" data-episode="${episode.episode_number}">
               <div class="relative">
-                ${episode.still_path 
-      ? `<img src="${generateImageUrl(episode.still_path, 'w780')}"
+                ${episode.still_path
+    ? `<img src="${generateImageUrl(episode.still_path, 'w780')}"
                        alt="Episode ${episode.episode_number}"
                        class="episode-thumbnail"
                        loading="lazy">`
-      : `<div class="episode-thumbnail no-image">${episodePlaceholderSvg}</div>`
-    }
+    : `<div class="episode-thumbnail no-image">${episodePlaceholderSvg}</div>`
+}
                 <div class="episode-progress">
                   <div class="episode-progress-fill" style="width: ${progressPercentage}%"></div>
                 </div>
@@ -131,6 +131,14 @@ export const generateMainTemplate = (
                loading="lazy"
                onerror="this.onerror=null; this.src='src/assets/placeholder.png';">
           ${trailerButton}
+          <button id="playButton" class="action-button watch-button">
+            <i class="fas fa-play"></i>
+            Watch Now
+          </button>
+          <button id="watchPartyButton" class="action-button party-button">
+            <i class="fas fa-users"></i>
+            Watch Party
+          </button>
           ${mediaType === 'tv'
     ? `
             <button id="selectEpisodeButton" class="action-button watch-button">
@@ -140,6 +148,32 @@ export const generateMainTemplate = (
           `
     : ''
 }
+          <div class="selectors-container">
+            <div class="provider-selection">
+              <label for="providerSelect" class="selector-label">
+                <i class="fas fa-play-circle"></i>
+                Select Provider
+              </label>
+              <select id="providerSelect" class="selector-input">
+                ${providerSelectionHtml}
+              </select>
+            </div>
+
+            <div class="language-selection">
+              <label for="languageSelect" class="selector-label">
+                <i class="fas fa-language"></i>
+                Select Language
+              </label>
+              <select id="languageSelect" class="selector-input">
+                ${languageOptions}
+              </select>
+            </div>
+          </div>
+
+          <button id="shareButton" class="action-button share-button">
+            <i class="fas fa-share"></i>
+            Share
+          </button>
         </div>
       </div>
       <div class="media-content flex-1">
@@ -202,39 +236,6 @@ export const generateMainTemplate = (
           <div class="cast-list">
             ${castList}
           </div>
-        </div>
-
-        <div class="selectors-container">
-          <div class="provider-selection">
-            <label for="providerSelect" class="selector-label">
-              <i class="fas fa-play-circle"></i>
-              Select Provider
-            </label>
-            <select id="providerSelect" class="selector-input">
-              ${providerSelectionHtml}
-            </select>
-          </div>
-
-          <div class="language-selection">
-            <label for="languageSelect" class="selector-label">
-              <i class="fas fa-language"></i>
-              Select Language
-            </label>
-            <select id="languageSelect" class="selector-input">
-              ${languageOptions}
-            </select>
-          </div>
-        </div>
-
-        <div class="media-actions">
-          <button id="playButton" class="action-button watch-button">
-            <i class="fas fa-play"></i>
-            Watch Now
-          </button>
-          <button id="shareButton" class="action-button share-button">
-            <i class="fas fa-share"></i>
-            Share
-          </button>
         </div>
 
         <div id="videoPlayer" class="hidden"></div>

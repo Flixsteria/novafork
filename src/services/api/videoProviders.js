@@ -1,5 +1,4 @@
 const providers = {
-  // Premium Providers
   vidlink: {
     name: 'VidLink - Premium',
     movie: id => `https://vidlink.pro/movie/${id}?primaryColor=#FFFFFF&secondaryColor=#FFFFFF&iconColor=#FFFFFF&autoplay=false`,
@@ -65,8 +64,6 @@ const providers = {
     movie: id => `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
     tv: (id, season, episode) => `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1&s=${season || 1}&e=${episode || 1}`,
   },
-
-  // Standard Providers
   vidsrc: {
     name: 'VidSrc',
     movie: id => `https://vidsrc.cc/v2/embed/movie/${id}?autoPlay=true`,
@@ -127,8 +124,6 @@ const providers = {
     movie: id => `https://moviee.tv/embed/movie/${id}`,
     tv: (id, season, episode) => `https://moviee.tv/embed/tv/${id}?seasion=${season || 1}&episode=${episode || 1}`,
   },
-
-  // Anime Providers
   anime: {
     name: 'Anime',
     movie: id => `https://anime.autoembed.cc/embed/${id}-episode-1`,
@@ -155,13 +150,22 @@ const providers = {
       return `https://embed.anicdn.top/v/${tvSlug}-dub/${episode || 1}.html`;
     },
   },
-
-  // Alternative Providers
   filmxy: {
     name: 'FilmXY - Multi Language',
-    movie: async (id, language) => {
+    movie: async (id, title, language) => {
       if (!language) throw new Error('Language is required for filmxy provider');
       const url = `https://cinescrape.com/global/${language.toLowerCase()}/${id}`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Network response was not ok');
+      const data = await response.json();
+      const m3u8Link = data.streamData.data.link;
+      if (!m3u8Link) throw new Error('No m3u8 link found');
+      return m3u8Link;
+    },
+    tv: async (id, season, episode, title, language) => {
+      if (!language) throw new Error('Language is required for filmxy provider');
+      if (!season || !episode) throw new Error('Season and episode numbers are required');
+      const url = `https://cinescrape.com/global/${language.toLowerCase()}/tv/${id}/${season}/${episode}`;
       const response = await fetch(url);
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
@@ -181,7 +185,7 @@ const providers = {
   },
 };
 
-export const getProviderGroups = () => ({
+const providerGroups = {
   premium: [
     { id: 'vidlink', name: 'VidLink - Premium' },
     { id: 'vidlinkdub', name: 'VidLink Dub - Multi Language' },
@@ -215,7 +219,9 @@ export const getProviderGroups = () => ({
     { id: 'nontongo', name: 'NontonGo' },
     { id: 'nontongoalt', name: 'NontonGo Alt' },
   ],
-});
+};
+
+export const getProviderGroups = () => providerGroups;
 
 export const getProviderUrl = async (provider, type, id, options = {}) => {
   const providerConfig = providers[provider];
@@ -226,12 +232,12 @@ export const getProviderUrl = async (provider, type, id, options = {}) => {
 
   try {
     if (type === 'movie') {
-      const url = await providerConfig.movie(id, options.title);
+      const url = await providerConfig.movie(id, options.title, options.language);
       console.log('Generated movie URL:', url);
       return url;
     }
     if (type === 'tv' && providerConfig.tv) {
-      const url = await providerConfig.tv(id, options.season, options.episode, options.title);
+      const url = await providerConfig.tv(id, options.season, options.episode, options.title, options.language);
       console.log('Generated TV URL:', url);
       return url;
     }
@@ -246,6 +252,7 @@ export const getProviderUrl = async (provider, type, id, options = {}) => {
 export const isProviderAvailable = (provider, type) => providers[provider] && (type === 'movie' ? !!providers[provider].movie : !!providers[provider].tv);
 
 export default {
+  providers,
   getProviderGroups,
   getProviderUrl,
   isProviderAvailable,
