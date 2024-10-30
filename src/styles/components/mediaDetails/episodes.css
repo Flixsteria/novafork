@@ -1,0 +1,313 @@
+/* Episode Modal Styles */
+.episode-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.episode-modal.active {
+    display: flex !important;
+}
+
+.episode-modal-content {
+    background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(17, 24, 39) 50%, rgb(88, 28, 135) 100%);
+    border-radius: 1.5rem;
+    width: 90%;
+    max-width: 1000px;
+    height: 80vh;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    position: relative;
+    border: 1px solid rgba(147, 51, 234, 0.3);
+}
+
+/* Select Episode Button */
+#selectEpisodeButton {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: linear-gradient(90deg, #4b0082, #000000);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    z-index: 1;
+    position: relative;
+}
+
+#selectEpisodeButton:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(90deg, #6a0dad, #1a1a1a);
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
+}
+
+#selectEpisodeButton i {
+    font-size: 1.25rem;
+}
+
+.seasons-list {
+    width: 33.333%;
+    background: rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.season-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.season-item:hover {
+    background: rgba(55, 65, 81, 0.7);
+}
+
+.season-item.selected {
+    background: rgba(55, 65, 81, 0.9);
+}
+
+.season-poster {
+    width: 5rem;
+    height: 7rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.season-info {
+    margin-left: 1rem;
+    flex: 1;
+}
+
+.season-title {
+    color: rgb(216, 180, 254);
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.episode-count {
+    color: rgb(199, 210, 254);
+    font-size: 0.875rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 0.5rem;
+    background: rgba(55, 65, 81, 0.8);
+    border-radius: 9999px;
+    margin-top: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: rgb(147, 51, 234);
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+}
+
+.episodes-container {
+    width: 66.667%;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+}
+
+.episode-search {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(31, 41, 55, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.episode-search:focus {
+    outline: none;
+    border-color: rgb(147, 51, 234);
+    box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.2);
+}
+
+.episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+.episode-card {
+    background: rgba(31, 41, 55, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.episode-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(147, 51, 234, 0.7);
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
+}
+
+.episode-card.selected {
+    border-color: rgb(147, 51, 234);
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.4);
+}
+
+.episode-thumbnail {
+    width: 100%;
+    height: 158px;
+    object-fit: cover;
+    background: linear-gradient(45deg, rgba(31, 41, 55, 0.7), rgba(147, 51, 234, 0.1));
+}
+
+.episode-info {
+    padding: 1rem;
+}
+
+.episode-number {
+    color: rgb(199, 210, 254);
+    font-size: 0.875rem;
+}
+
+.episode-title {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0.25rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.episode-overview {
+    color: rgb(209, 213, 219);
+    font-size: 0.875rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.episode-progress {
+    height: 0.25rem;
+    background: rgba(55, 65, 81, 0.8);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.episode-progress-fill {
+    height: 100%;
+    background: rgb(147, 51, 234);
+    transition: width 0.3s ease;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: white;
+    background: rgba(147, 51, 234, 0.2);
+    border: 1px solid rgba(147, 51, 234, 0.3);
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.close-modal:hover {
+    background: rgba(147, 51, 234, 0.4);
+    transform: scale(1.1);
+}
+
+/* Custom Scrollbar */
+.seasons-list::-webkit-scrollbar,
+.episodes-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.seasons-list::-webkit-scrollbar-track,
+.episodes-container::-webkit-scrollbar-track {
+    background: rgba(31, 41, 55, 0.9);
+}
+
+.seasons-list::-webkit-scrollbar-thumb,
+.episodes-container::-webkit-scrollbar-thumb {
+    background: rgba(147, 51, 234, 0.5);
+    border-radius: 4px;
+}
+
+.seasons-list::-webkit-scrollbar-thumb:hover,
+.episodes-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(147, 51, 234, 0.7);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .episode-modal {
+        padding: 1rem;
+    }
+
+    .episode-modal-content {
+        flex-direction: column;
+        height: 95vh;
+    }
+
+    .seasons-list,
+    .episodes-container {
+        width: 100%;
+        height: 50%;
+    }
+
+    .episodes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    .episode-thumbnail {
+        height: 135px;
+    }
+}
+
+@media (max-width: 480px) {
+    .episodes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .episode-thumbnail {
+        height: 200px;
+    }
+
+    .episode-info {
+        padding: 0.75rem;
+    }
+}

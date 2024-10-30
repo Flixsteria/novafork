@@ -1,0 +1,153 @@
+/* Media Info Styles */
+.media-header {
+    margin-bottom: 0.5rem;
+}
+
+.media-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    word-wrap: break-word;
+}
+
+.media-year {
+    color: #9ca3af;
+    font-size: 1rem;
+}
+
+.media-stats {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.media-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+}
+
+.media-stat i {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media-stat .fa-star { color: #fbbf24; }
+.media-stat .fa-clock { color: #8b5cf6; }
+.media-stat .fa-fire { color: #ef4444; }
+.media-stat .fa-film,
+.media-stat .fa-tv { color: #10b981; }
+
+.media-overview {
+    color: #d1d5db;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    width: 100%;
+}
+
+.media-metadata {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin: 0.5rem 0;
+    width: 100%;
+}
+
+.metadata-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+}
+
+.metadata-label {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.metadata-value {
+    color: #fff;
+    font-size: 1rem;
+    word-wrap: break-word;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .media-poster {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .media-poster img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 0.5rem;
+    }
+
+    .media-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .media-year {
+        text-align: center;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .media-stats {
+        gap: 1rem;
+        justify-content: center;
+        margin: 1rem 0;
+    }
+
+    .media-stat {
+        font-size: 0.875rem;
+    }
+
+    .media-overview {
+        font-size: 0.9375rem;
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .media-metadata {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .media-title {
+        font-size: 1.25rem;
+    }
+
+    .media-stat {
+        font-size: 0.8125rem;
+    }
+
+    .media-overview {
+        font-size: 0.875rem;
+    }
+
+    .metadata-label {
+        font-size: 0.75rem;
+    }
+
+    .metadata-value {
+        font-size: 0.875rem;
+    }
+}

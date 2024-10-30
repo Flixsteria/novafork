@@ -1,0 +1,143 @@
+/* Media Details Layout */
+#selectedMediaSection {
+    margin: 2rem 0;
+    padding: 0 1rem;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+#selectedMovie {
+    background: rgba(20, 20, 30, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(76, 0, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(31, 38, 135, 0.37),
+        0 0 10px rgba(76, 0, 255, 0.1);
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+.media-details {
+    padding: 2rem;
+    width: 100%;
+    max-width: 100%;
+}
+
+.media-details .flex {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    align-items: stretch;
+}
+
+.media-left-column {
+    flex: 0 0 300px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.media-content {
+    flex: 1;
+    min-width: 0;
+    width: calc(100% - 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-right: 1rem;
+}
+
+/* Control layout order and flex distribution */
+.media-header { order: 1; }
+.media-stats { order: 2; }
+.media-overview { order: 3; }
+.media-metadata { order: 4; }
+.media-cast { order: 5; }
+.selectors-container { order: 6; }
+.media-actions { order: 7; }
+#videoPlayer { 
+    order: 8;
+    margin-top: auto;
+    height: 800px;
+    width: 100%;
+}
+
+/* Media poster styles */
+.media-poster-large {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.media-poster-large img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.media-poster-large .trailer-button,
+.media-poster-large .action-button {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    #selectedMediaSection {
+        margin: 1rem 0;
+        padding: 0 0.5rem;
+    }
+
+    .media-details {
+        padding: 1rem;
+    }
+
+    .media-details .flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .media-content {
+        width: 100%;
+        padding-right: 0;
+        gap: 1rem;
+    }
+
+    .media-left-column {
+        width: 100%;
+        flex: none;
+    }
+
+    #videoPlayer { 
+        width: 100%;
+        height: 56.25vw;
+        max-height: 400px;
+        margin: 1rem 0;
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 480px) {
+    #selectedMediaSection {
+        margin: 0.5rem 0;
+        padding: 0 0.25rem;
+    }
+
+    .media-details {
+        padding: 0.75rem;
+    }
+
+    .media-details .flex {
+        gap: 0.75rem;
+    }
+
+    #videoPlayer {
+        max-height: 300px;
+    }
+}

@@ -40,7 +40,7 @@ class MediaPlayer {
     });
   }
 
-  async play(media, options = {}) {
+  async play(media, seasonNumber = null, episodeNumber = null) {
     this.container = document.getElementById(this.containerId);
 
     if (!media || !this.container) {
@@ -53,10 +53,20 @@ class MediaPlayer {
       this.currentMedia = media;
 
       const mediaType = media.media_type || (media.title ? 'movie' : 'tv');
-      console.log('Playing media:', { type: mediaType, id: media.id, provider: this.currentProvider });
+      console.log('Playing media:', {
+        type: mediaType,
+        id: media.id,
+        provider: this.currentProvider,
+        season: seasonNumber,
+        episode: episodeNumber,
+      });
 
       this.container.classList.add('loading');
       this.container.classList.remove('hidden');
+
+      const options = mediaType === 'tv' && seasonNumber && episodeNumber
+        ? { season: seasonNumber, episode: episodeNumber }
+        : {};
 
       const url = await videoProviders.getProviderUrl(
         this.currentProvider,

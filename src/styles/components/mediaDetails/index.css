@@ -1,0 +1,7 @@
+/* Import all media details styles */
+@import './layout.css';
+@import './info.css';
+@import './cast.css';
+@import './episodes.css';
+@import './player.css';
+@import './controls.css';
