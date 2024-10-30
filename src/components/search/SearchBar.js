@@ -64,7 +64,7 @@ class SearchBar {
 
     // Click outside handler
     document.addEventListener('click', event => {
-      if (!this.searchInput.contains(event.target) 
+      if (!this.searchInput.contains(event.target)
           && !this.suggestionsContainer.contains(event.target)) {
         this.hideSuggestions();
       }
@@ -85,7 +85,7 @@ class SearchBar {
   async handleSearch() {
     const query = this.searchInput.value.trim();
     if (query) {
-      stateManager.setState({ 
+      stateManager.setState({
         searchQuery: query,
         currentMediaType: 'search',
         currentPage: 1,

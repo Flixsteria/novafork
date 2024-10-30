@@ -51,7 +51,10 @@ class App {
 
       this.tmdbService = new TMDBService(config.apiKey);
       this.searchService = new SearchService(config.apiKey);
-      this.advancedSearchService = new AdvancedSearchService(this.searchService, stateManager);
+      this.advancedSearchService = new AdvancedSearchService(
+        this.searchService,
+        stateManager,
+      );
       releaseTypeService.setApiKey(config.apiKey);
       this.apiKey = config.apiKey;
 
@@ -90,30 +93,6 @@ class App {
       additionalFiltersId: 'additionalFilters',
       onFilterChange: () => this.handleFilterChange(),
     });
-
-    // Initialize hide trending functionality
-    this.initializeHideTrending();
-  }
-
-  initializeHideTrending() {
-    const toggleButton = document.getElementById('togglePopularMedia');
-    const popularMediaDiv = document.getElementById('popularMedia');
-
-    if (toggleButton && popularMediaDiv) {
-      // Set initial state
-      popularMediaDiv.style.display = 'grid';
-      toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i> Hide Trending';
-
-      toggleButton.addEventListener('click', () => {
-        if (popularMediaDiv.style.display === 'none') {
-          popularMediaDiv.style.display = 'grid';
-          toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i> Hide Trending';
-        } else {
-          popularMediaDiv.style.display = 'none';
-          toggleButton.innerHTML = '<i class="fas fa-eye"></i> Show Trending';
-        }
-      });
-    }
   }
 
   setupEventListeners() {
@@ -188,7 +167,12 @@ class App {
 
   async loadMediaFromUrlParams() {
     try {
-      const mediaInfo = await urlService.loadMediaFromUrlParams(null, null, null, this.apiKey);
+      const mediaInfo = await urlService.loadMediaFromUrlParams(
+        null,
+        null,
+        null,
+        this.apiKey,
+      );
       if (mediaInfo) {
         await this.handleMediaSelect({
           id: mediaInfo.mediaId,
@@ -212,23 +196,44 @@ class App {
     try {
       let results;
       const filters = filterService.getSelectedFilters();
-      const mediaType = Array.isArray(filters.type) ? filters.type[0] : filters.type;
+      const mediaType = Array.isArray(filters.type)
+        ? filters.type[0]
+        : filters.type;
 
       switch (state.currentMediaType) {
       case 'search':
         if (Array.isArray(filters.type)) {
           // If searching all content types, merge results from both movie and TV
           const [movieResults, tvResults] = await Promise.all([
-            this.searchService.searchMedia(state.searchQuery, 'movie', state.currentPage, filters.category),
-            this.searchService.searchMedia(state.searchQuery, 'tv', state.currentPage, filters.category),
+            this.searchService.searchMedia(
+              state.searchQuery,
+              'movie',
+              state.currentPage,
+              filters.category,
+            ),
+            this.searchService.searchMedia(
+              state.searchQuery,
+              'tv',
+              state.currentPage,
+              filters.category,
+            ),
           ]);
 
           results = {
             results: [
-              ...movieResults.results.map(item => ({ ...item, media_type: 'movie' })),
-              ...tvResults.results.map(item => ({ ...item, media_type: 'tv' })),
+              ...movieResults.results.map(item => ({
+                ...item,
+                media_type: 'movie',
+              })),
+              ...tvResults.results.map(item => ({
+                ...item,
+                media_type: 'tv',
+              })),
             ],
-            total_pages: Math.max(movieResults.total_pages, tvResults.total_pages),
+            total_pages: Math.max(
+              movieResults.total_pages,
+              tvResults.total_pages,
+            ),
             page: state.currentPage,
           };
         } else {
@@ -239,7 +244,10 @@ class App {
             filters.category,
           );
           // Add media_type to results
-          results.results = results.results.map(item => ({ ...item, media_type: mediaType }));
+          results.results = results.results.map(item => ({
+            ...item,
+            media_type: mediaType,
+          }));
         }
         break;
 
@@ -247,15 +255,32 @@ class App {
         if (state.currentActorId) {
           if (Array.isArray(filters.type)) {
             const [movieResults, tvResults] = await Promise.all([
-              this.searchService.getMediaByActor(state.currentActorId, 'movie', state.currentPage),
-              this.searchService.getMediaByActor(state.currentActorId, 'tv', state.currentPage),
+              this.searchService.getMediaByActor(
+                state.currentActorId,
+                'movie',
+                state.currentPage,
+              ),
+              this.searchService.getMediaByActor(
+                state.currentActorId,
+                'tv',
+                state.currentPage,
+              ),
             ]);
             results = {
               results: [
-                ...movieResults.results.map(item => ({ ...item, media_type: 'movie' })),
-                ...tvResults.results.map(item => ({ ...item, media_type: 'tv' })),
+                ...movieResults.results.map(item => ({
+                  ...item,
+                  media_type: 'movie',
+                })),
+                ...tvResults.results.map(item => ({
+                  ...item,
+                  media_type: 'tv',
+                })),
               ],
-              total_pages: Math.max(movieResults.total_pages, tvResults.total_pages),
+              total_pages: Math.max(
+                movieResults.total_pages,
+                tvResults.total_pages,
+              ),
               page: state.currentPage,
             };
           } else {
@@ -265,7 +290,10 @@ class App {
               state.currentPage,
             );
             // Add media_type to results
-            results.results = results.results.map(item => ({ ...item, media_type: mediaType }));
+            results.results = results.results.map(item => ({
+              ...item,
+              media_type: mediaType,
+            }));
           }
         }
         break;
@@ -274,15 +302,32 @@ class App {
         if (state.currentCompanyId) {
           if (Array.isArray(filters.type)) {
             const [movieResults, tvResults] = await Promise.all([
-              this.searchService.getMediaByCompany(state.currentCompanyId, 'movie', state.currentPage),
-              this.searchService.getMediaByCompany(state.currentCompanyId, 'tv', state.currentPage),
+              this.searchService.getMediaByCompany(
+                state.currentCompanyId,
+                'movie',
+                state.currentPage,
+              ),
+              this.searchService.getMediaByCompany(
+                state.currentCompanyId,
+                'tv',
+                state.currentPage,
+              ),
             ]);
             results = {
               results: [
-                ...movieResults.results.map(item => ({ ...item, media_type: 'movie' })),
-                ...tvResults.results.map(item => ({ ...item, media_type: 'tv' })),
+                ...movieResults.results.map(item => ({
+                  ...item,
+                  media_type: 'movie',
+                })),
+                ...tvResults.results.map(item => ({
+                  ...item,
+                  media_type: 'tv',
+                })),
               ],
-              total_pages: Math.max(movieResults.total_pages, tvResults.total_pages),
+              total_pages: Math.max(
+                movieResults.total_pages,
+                tvResults.total_pages,
+              ),
               page: state.currentPage,
             };
           } else {
@@ -292,7 +337,10 @@ class App {
               state.currentPage,
             );
             // Add media_type to results
-            results.results = results.results.map(item => ({ ...item, media_type: mediaType }));
+            results.results = results.results.map(item => ({
+              ...item,
+              media_type: mediaType,
+            }));
           }
         }
         break;
@@ -300,14 +348,20 @@ class App {
         // Collection case remains unchanged as it's movie-only
       case 'collection':
         if (state.currentCollectionId) {
-          const collection = await this.searchService.getCollectionDetails(state.currentCollectionId);
+          const collection = await this.searchService.getCollectionDetails(
+            state.currentCollectionId,
+          );
           if (collection.parts) {
-            const sortedMovies = collection.parts.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
+            const sortedMovies = collection.parts.sort(
+              (a, b) => new Date(a.release_date) - new Date(b.release_date),
+            );
             const totalPages = Math.ceil(sortedMovies.length / 12);
             const start = (state.currentPage - 1) * 12;
             const end = start + 12;
             results = {
-              results: sortedMovies.slice(start, end).map(item => ({ ...item, media_type: 'movie' })),
+              results: sortedMovies
+                .slice(start, end)
+                .map(item => ({ ...item, media_type: 'movie' })),
               total_pages: totalPages,
               page: state.currentPage,
             };
@@ -319,15 +373,32 @@ class App {
         if (state.currentFranchiseKeywordId) {
           if (Array.isArray(filters.type)) {
             const [movieResults, tvResults] = await Promise.all([
-              this.searchService.getMediaByKeyword(state.currentFranchiseKeywordId, 'movie', state.currentPage),
-              this.searchService.getMediaByKeyword(state.currentFranchiseKeywordId, 'tv', state.currentPage),
+              this.searchService.getMediaByKeyword(
+                state.currentFranchiseKeywordId,
+                'movie',
+                state.currentPage,
+              ),
+              this.searchService.getMediaByKeyword(
+                state.currentFranchiseKeywordId,
+                'tv',
+                state.currentPage,
+              ),
             ]);
             results = {
               results: [
-                ...movieResults.results.map(item => ({ ...item, media_type: 'movie' })),
-                ...tvResults.results.map(item => ({ ...item, media_type: 'tv' })),
+                ...movieResults.results.map(item => ({
+                  ...item,
+                  media_type: 'movie',
+                })),
+                ...tvResults.results.map(item => ({
+                  ...item,
+                  media_type: 'tv',
+                })),
               ],
-              total_pages: Math.max(movieResults.total_pages, tvResults.total_pages),
+              total_pages: Math.max(
+                movieResults.total_pages,
+                tvResults.total_pages,
+              ),
               page: state.currentPage,
             };
           } else {
@@ -337,7 +408,10 @@ class App {
               state.currentPage,
             );
             // Add media_type to results
-            results.results = results.results.map(item => ({ ...item, media_type: mediaType }));
+            results.results = results.results.map(item => ({
+              ...item,
+              media_type: mediaType,
+            }));
           }
         }
         break;
@@ -357,19 +431,34 @@ class App {
             ]);
             results = {
               results: [
-                ...movieResults.results.map(item => ({ ...item, media_type: 'movie' })),
-                ...tvResults.results.map(item => ({ ...item, media_type: 'tv' })),
+                ...movieResults.results.map(item => ({
+                  ...item,
+                  media_type: 'movie',
+                })),
+                ...tvResults.results.map(item => ({
+                  ...item,
+                  media_type: 'tv',
+                })),
               ],
-              total_pages: Math.max(movieResults.total_pages, tvResults.total_pages),
+              total_pages: Math.max(
+                movieResults.total_pages,
+                tvResults.total_pages,
+              ),
               page: state.currentPage,
             };
           } else {
-            results = await this.tmdbService.fetchFromAPI(`/discover/${mediaType}`, {
-              page: state.currentPage,
-              with_genres: filters.category,
-            });
+            results = await this.tmdbService.fetchFromAPI(
+              `/discover/${mediaType}`,
+              {
+                page: state.currentPage,
+                with_genres: filters.category,
+              },
+            );
             // Add media_type to results
-            results.results = results.results.map(item => ({ ...item, media_type: mediaType }));
+            results.results = results.results.map(item => ({
+              ...item,
+              media_type: mediaType,
+            }));
           }
         } else if (Array.isArray(filters.type)) {
           const [movieResults, tvResults] = await Promise.all([
@@ -382,18 +471,33 @@ class App {
           ]);
           results = {
             results: [
-              ...movieResults.results.map(item => ({ ...item, media_type: 'movie' })),
-              ...tvResults.results.map(item => ({ ...item, media_type: 'tv' })),
+              ...movieResults.results.map(item => ({
+                ...item,
+                media_type: 'movie',
+              })),
+              ...tvResults.results.map(item => ({
+                ...item,
+                media_type: 'tv',
+              })),
             ],
-            total_pages: Math.max(movieResults.total_pages, tvResults.total_pages),
+            total_pages: Math.max(
+              movieResults.total_pages,
+              tvResults.total_pages,
+            ),
             page: state.currentPage,
           };
         } else {
-          results = await this.tmdbService.fetchFromAPI(`/trending/${mediaType}/week`, {
-            page: state.currentPage,
-          });
+          results = await this.tmdbService.fetchFromAPI(
+            `/trending/${mediaType}/week`,
+            {
+              page: state.currentPage,
+            },
+          );
           // Add media_type to results
-          results.results = results.results.map(item => ({ ...item, media_type: mediaType }));
+          results.results = results.results.map(item => ({
+            ...item,
+            media_type: mediaType,
+          }));
         }
         break;
       }

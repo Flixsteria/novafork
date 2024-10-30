@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Previous head content remains the same -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +29,7 @@
             <div class="text-center mb-8 sm:mb-12">
                 <!-- Console Hider Toggle -->
                 <div class="absolute top-4 right-4 sm:top-8 sm:right-8 z-50">
-                    <button id="toggleConsoleHider" class="glassmorphism text-sm sm:text-base py-2 px-3 sm:px-4 rounded-full flex items-center space-x-2">
+                    <button id="toggleConsoleHider" class="hidden glassmorphism text-sm sm:text-base py-2 px-3 sm:px-4 rounded-full flex items-center space-x-2">
                         <i class="fas fa-terminal"></i>
                         <span class="hidden sm:inline">Toggle Console</span>
                     </button>
@@ -166,10 +167,6 @@
             <section class="mb-8 sm:mb-12 mt-8 sm:mt-16">
                 <div class="flex justify-between items-center mb-4 sm:mb-6">
                     <h2 class="text-2xl sm:text-3xl font-bold text-white neon-text">Trending Media</h2>
-                    <button id="togglePopularMedia"
-                            class="btn-gradient rounded-full text-base sm:text-lg whitespace-nowrap px-4 sm:px-6 py-2">
-                        Hide Trending
-                    </button>
                 </div>
                 <div id="popularMedia"
                      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-6 p-4 sm:p-6 glassmorphism rounded-2xl">
@@ -200,11 +197,29 @@
                         <a href="mailto:novafork@proton.me" class="text-purple-400 hover:text-purple-300">novafork@proton.me</a>
                     </p>
                 </div>
+
+                <div class="my-6 relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"></div>
+                    <div class="w-full h-px bg-purple-500/10"></div>
+                </div>
+
                 <div class="mt-4 text-center">
                     <p>This is a fork of the original project by 
                         <a href="https://github.com/ambr0sial/nova" target="_blank"
                            class="text-purple-400 hover:text-purple-300">Ambrosial</a>.
                     </p>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <div class="inline-flex items-center justify-center gap-2 glassmorphism px-4 py-2 rounded-full bg-purple-500/5">
+                        <i class="fas fa-film text-purple-500"></i>
+                        <span>Redesigned with</span>
+                        <i class="fas fa-heart text-purple-500 animate-pulse"></i>
+                        <span>by</span>
+                        <a href="https://flixsteria.com/" target="_blank" 
+                           class="text-purple-400 hover:text-purple-300 transition-all duration-300">Flixsteria</a>
+                        <span>team</span>
+                    </div>
                 </div>
             </footer>
         </div>

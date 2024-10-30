@@ -28,9 +28,10 @@ Progress Overview:
 - [x] Core streaming functionality
 - [x] Basic UI implementation
 - [x] Search and filtering
+- [x] Movie poster display and loading
+- [x] TV Shows functionality
+- [x] UI cleanup (removed trending toggle)
 - [ ] Advanced filters dropdown (Low Priority)
-- [ ] Poster images restoration (High Priority)
-- [ ] TV Shows functionality (High Priority)
 - [ ] Social features (Planned) (maybe ill make use of flixsteria as a social api endpoint for movie services) [flixsteria](https://flixsteria.com/) - that is if i every get around to making it.
 
 ## Project Structure
@@ -79,37 +80,20 @@ novafork/
 
 ### 🔴 High Priority
 
-1. **TV Shows Display**
-   - Status: Needs Improvement
-   - Issue: Display page not optimized for TV shows
-   - Fix: Implement proper season/episode selection
-   - Add episode information display
-   - Improve series navigation
-
-2. **Hide Trending Button**
-   - Status: Broken
-   - Issue: Button functionality not working correctly
-   - Fix: Restore hide/show trending section toggle
-
-3. **Advanced Filters Dropdown**
+1. **Advanced Filters Dropdown**
    - Status: In Progress
    - Issue: Menu not displaying correctly
    - Fix: Restructure dropdown component
 
-4. **Movie Posters**
-   - Status: Broken
-   - Issue: Images not loading
-   - Fix: Restore image loading logic
-
 ### 🟡 Medium Priority
 
-4. **Favorites System**
+2. **Favorites System**
    - Local storage integration
    - Cloud sync capability
    - Custom collections support
    - Favorite shows/episodes tracking
 
-5. **Comments System**
+3. **Comments System**
    - Threaded comments
    - Rating system
    - Moderation tools
@@ -117,13 +101,13 @@ novafork/
 
 ### 🟢 Future Enhancements
 
-6. **Watch Party**
+4. **Watch Party**
    - Synchronized playback
    - Real-time chat
    - User presence system
    - TV show episode sync support
 
-7. **Code Improvements**
+5. **Code Improvements**
    - Further modularization
    - Performance optimization
    - Testing implementation
@@ -166,6 +150,7 @@ http://localhost:3000
 - Original novafork by [Noname25495](https://github.com/noname25495)
 - Nova concept by [ambr0sial](https://github.com/ambr0sial)
 - TMDB API integration
+- UI redesign by [Flixsteria](https://flixsteria.com/) team
 
 ## Disclaimer
 
