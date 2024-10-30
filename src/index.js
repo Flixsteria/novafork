@@ -97,19 +97,20 @@ class App {
 
   initializeHideTrending() {
     const toggleButton = document.getElementById('togglePopularMedia');
-    const popularMedia = document.getElementById('popularMedia');
+    const popularMediaDiv = document.getElementById('popularMedia');
 
-    if (toggleButton && popularMedia) {
+    if (toggleButton && popularMediaDiv) {
+      // Set initial state
+      popularMediaDiv.style.display = 'grid';
       toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i> Hide Trending';
 
       toggleButton.addEventListener('click', () => {
-        popularMedia.classList.toggle('hidden');
-        toggleButton.classList.toggle('hidden-state');
-
-        if (popularMedia.classList.contains('hidden')) {
-          toggleButton.innerHTML = '<i class="fas fa-eye"></i> Show Trending';
-        } else {
+        if (popularMediaDiv.style.display === 'none') {
+          popularMediaDiv.style.display = 'grid';
           toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i> Hide Trending';
+        } else {
+          popularMediaDiv.style.display = 'none';
+          toggleButton.innerHTML = '<i class="fas fa-eye"></i> Show Trending';
         }
       });
     }

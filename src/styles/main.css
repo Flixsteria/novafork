@@ -17,6 +17,7 @@
 @import './components/mediaCard.css';
 @import './components/mediaDetails.css';
 @import './components/mediaPlayer.css';
+@import './components/search.css';
 
 /* Filter Styles - Load last to ensure highest priority */
 @layer filters {
